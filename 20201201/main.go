@@ -7,7 +7,14 @@ import (
 	"strconv"
 )
 
-func ParseLines(filePath string, parse func(string) (string,bool)) ([]int, error) {
+// The Elves in accounting are thankful for your help; one of them even offers you a starfish coin they had left over from a past vacation. They offer you a second one if you can find three numbers in your expense report that meet the same criteria.
+
+// Using the above example again, the three entries that sum to 2020 are 979, 366, and 675. Multiplying them together produces the answer, 241861950.
+
+// In your expense report, what is the product of the three entries that sum to 2020?
+
+
+func parseLines(filePath string, parse func(string) (string,bool)) ([]int, error) {
   inputFile, err := os.Open(filePath)
   if err != nil {
     return nil, err
@@ -28,14 +35,14 @@ func ParseLines(filePath string, parse func(string) (string,bool)) ([]int, error
   return results, nil
 }
 
-func find_number(list []int) int {
+func findNumber(list []int) int {
     for i, res := range list {
         // Iterate using for loop
         for e := (i+1); e < len(list)-1; e++ {
             for s := (e+1); s < len(list)-2; s++ {
                 // fmt.Println(result)
                 if res + list[e] + list[s] == 2020 {
-                    fmt.Println(res + list[e] + list[s])
+                    // fmt.Println(res + list[e] + list[s])
                     return res*list[e]*list[s]
                 }
             }
@@ -53,7 +60,7 @@ func main() {
     return
   }
 
-  lines, err := ParseLines(os.Args[1], func(s string)(string,bool){ 
+  lines, err := parseLines(os.Args[1], func(s string)(string,bool){ 
     return s, true
   })
   if err != nil {
@@ -61,7 +68,7 @@ func main() {
     return
   }
 
-  num := find_number(lines)
+  num := findNumber(lines)
   fmt.Println(num)
 
 //   for _, l := range lines {
