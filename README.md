@@ -9,9 +9,5 @@ go run 20201201/main.go 20201201/input.txt
 go run 20201202/main.go 20201202/input.txt
 
 ## 2021
-### day1
-go run 20211201/1/main.go 20211201/input.txt
-
-go run 20211201/2/main.go 20211201/input.txt
-
-### day2
+### run code
+go run <date>/<part>/main.go <date>/input.txt
